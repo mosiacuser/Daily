@@ -1,0 +1,41 @@
+{
+  "name": "ai-training",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@google/generative-ai": "^0.24.1",
+    "@langchain/community": "^0.3.49",
+    "@langchain/google-genai": "^0.2.16",
+    "@pinecone-database/pinecone": "^6.1.2",
+    "@types/multer": "^2.0.0",
+    "ai": "^4.3.19",
+    "axios": "^1.11.0",
+    "cheerio": "^1.1.2",
+    "langchain": "^0.3.30",
+    "lucide-react": "^0.525.0",
+    "mammoth": "^1.9.1",
+    "next": "15.4.1",
+    "openai": "^5.10.2",
+    "pdf-parse": "^1.1.1",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.1",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
