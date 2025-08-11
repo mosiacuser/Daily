@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { indexWebsiteContent } from '@/lib/website-indexer';
+import { indexWebsiteContent } from '../../../lib/website-indexer';
 
 export async function POST(request: NextRequest) {
   try {

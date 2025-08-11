@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { testOpenAIConnection } from '@/lib/openai-config';
-import { testOpenAIChat } from '@/lib/openai-chat';
+import { testOpenAIConnection } from '../../../lib/openai-config';
+import { testOpenAIChat } from '../../../lib/openai-chat';
 
 export async function GET(request: NextRequest) {
   try {
