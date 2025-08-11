@@ -180,7 +180,13 @@ function createChunks(content: string, fileName: string, chunkSize: number = 100
   return chunks;
 }
 
-export function combineRelevantChunks(chunks: any[], maxLength: number = 3000): string {
+interface PineconeChunk {
+  metadata?: {
+    content: string;
+  };
+}
+
+export function combineRelevantChunks(chunks: PineconeChunk[], maxLength: number = 3000): string {
   let combinedContent = '';
   let currentLength = 0;
   
