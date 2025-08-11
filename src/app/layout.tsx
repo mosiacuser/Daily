@@ -29,62 +29,18 @@ export default function RootLayout({
         <Script
           src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"
           strategy="beforeInteractive"
+          defer
+        />
+        <Script
+          src="https://files.bpcontent.cloud/2025/08/11/09/20250811090054-JSLR2VXM.js"
+          strategy="beforeInteractive"
+          defer
         />
       </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-
-        <div id="webchat" style={{
-          position: 'fixed',
-          bottom: '20px',
-          right: '20px',
-          width: '500px',
-          height: '500px',
-          zIndex: 9999
-        }}></div>
-
-        <Script id="botpress-styles" strategy="lazyOnload">
-          {`
-            const style = document.createElement('style');
-            style.textContent = \`
-              #webchat .bpWebchat {
-                position: unset;
-                width: 100%;
-                height: 100%;
-                max-height: 100%;
-                max-width: 100%;
-              }
-
-              #webchat .bpFab {
-                display: none;
-              }
-            \`;
-            document.head.appendChild(style);
-          `}
-        </Script>
-
-        <Script id="botpress-init" strategy="lazyOnload">
-          {`
-            window.botpress.on("webchat:ready", () => {
-              window.botpress.open();
-            });
-            window.botpress.init({
-              "botId": "e7f5becd-efdc-4b47-9b2b-aad96cf93370",
-              "configuration": {
-                "version": "v1",
-                "botName": "Gamma Support Agent",
-                "botAvatar": "https://files.bpcontent.cloud/2025/08/11/09/20250811091226-R88YK3GD.png",
-                "botDescription": "I can help you with questions about Gamma's AI-driven design tools, resolve issues, and guide you through digital content creation and workflow automation.",
-                "website": {
-                  "title": "Website",
-                  "link": "https://ga"
-                }
-              }
-            });
-          `}
-        </Script>
       </body>
     </html>
   );
