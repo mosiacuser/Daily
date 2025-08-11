@@ -1,5 +1,23 @@
 import { Pinecone } from '@pinecone-database/pinecone';
 
+interface IndexDetail {
+  name: string;
+  dimension: number;
+  metric: string;
+  status: string;
+}
+
+interface PineconeDetails {
+  totalIndexes: number;
+  indexes: IndexDetail[];
+}
+
+interface ScoredPineconeRecord {
+  id: string;
+  score?: number;
+  metadata?: Record<string, unknown>;
+}
+
 let pinecone: Pinecone | null = null;
 
 export function initializePinecone(): Pinecone {
@@ -19,7 +37,7 @@ export function initializePinecone(): Pinecone {
   return pinecone;
 }
 
-export async function testPineconeConnection(): Promise<{ success: boolean; message: string; details?: any }> {
+export async function testPineconeConnection(): Promise<{ success: boolean; message: string; details?: PineconeDetails }> {
   try {
     console.log('🔍 Testing Pinecone connection...');
     
@@ -47,14 +65,16 @@ export async function testPineconeConnection(): Promise<{ success: boolean; mess
     console.error('❌ Pinecone connection test failed:', error);
     
     let errorMessage = 'Unknown error';
-    if (error.message.includes('API key')) {
-      errorMessage = 'Invalid Pinecone API key';
-    } else if (error.message.includes('network') || error.message.includes('timeout')) {
-      errorMessage = 'Network error - check internet connection';
-    } else if (error.message.includes('quota') || error.message.includes('limit')) {
-      errorMessage = 'API quota or rate limit exceeded';
-    } else {
-      errorMessage = error.message;
+    if (error instanceof Error) {
+        if (error.message.includes('API key')) {
+          errorMessage = 'Invalid Pinecone API key';
+        } else if (error.message.includes('network') || error.message.includes('timeout')) {
+          errorMessage = 'Network error - check internet connection';
+        } else if (error.message.includes('quota') || error.message.includes('limit')) {
+          errorMessage = 'API quota or rate limit exceeded';
+        } else {
+          errorMessage = error.message;
+        }
     }
 
     return {
@@ -110,7 +130,7 @@ export async function searchSimilarDocuments(
   indexName: string, 
   queryEmbedding: number[], 
   topK: number = 5
-): Promise<any[]> {
+): Promise<ScoredPineconeRecord[]> {
   try {
     const pc = initializePinecone();
     const index = pc.index(indexName);
@@ -133,7 +153,7 @@ export async function upsertDocument(
   indexName: string,
   id: string,
   embedding: number[],
-  metadata: Record<string, any>
+  metadata: Record<string, unknown>
 ) {
   try {
     const pc = initializePinecone();

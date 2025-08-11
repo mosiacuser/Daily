@@ -1,5 +1,6 @@
 // Simple wrapper for pdf-parse to avoid import issues
-let pdfParse: any = null;
+type PdfParse = (buffer: Buffer) => Promise<{ text: string }>;
+let pdfParse: PdfParse | null = null;
 
 export async function parsePDF(buffer: Buffer): Promise<{ text: string }> {
   try {

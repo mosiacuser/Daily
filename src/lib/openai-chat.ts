@@ -165,11 +165,12 @@ export async function testOpenAIChat(): Promise<{ success: boolean; message: str
       throw new Error('No response from OpenAI');
     }
 
-  } catch (error: any) {
+  } catch (error) {
     console.error('❌ OpenAI chat test failed:', error);
+    const message = error instanceof Error ? error.message : 'Unknown error';
     return {
       success: false,
-      message: `OpenAI聊天测试失败: ${error.message || 'Unknown error'}`
+      message: `OpenAI聊天测试失败: ${message}`
     };
   }
 }
