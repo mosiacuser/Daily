@@ -25,27 +25,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <Script
+          src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"
+          strategy="beforeInteractive"
+          defer
+        />
+        <Script
+          src="https://files.bpcontent.cloud/2025/08/11/09/20250811090054-JSLR2VXM.js"
+          strategy="beforeInteractive"
+          defer
+        />
+      </head>
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         {children}
-
-        {/* 2. Chatbase 配置脚本 */}
-        <Script id="chatbase-config" strategy="lazyOnload">
-          {`
-            window.chatbaseConfig = {
-              chatbotId: "ctFVfk_H4z1Mu0e1NmrxH",
-            }
-          `}
-        </Script>
-
-        {/* 3. Chatbase 加载脚本 */}
-        <Script
-          src="https://www.chatbase.co/embed.min.js"
-          id="chatbase-embed"
-          strategy="lazyOnload"
-          async
-        />
       </body>
     </html>
   );
