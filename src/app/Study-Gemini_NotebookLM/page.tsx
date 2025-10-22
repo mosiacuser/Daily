@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import { ChevronDown, ChevronRight, BookOpen, Brain, Mic, Globe, FileText, Users, Play, PauseCircle, Volume2 } from 'lucide-react';
+import { BookOpen, Brain, Mic, Globe, FileText, Users, Play, Volume2 } from 'lucide-react';
 
 interface TableRow {
   task: string;

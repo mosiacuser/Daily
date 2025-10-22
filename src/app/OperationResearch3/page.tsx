@@ -4,8 +4,8 @@ import { useEffect, useRef, useState, type FC, type ReactNode } from 'react'
 
 // ==================== MathJax 全局配置 ====================
 if (typeof window !== "undefined") {
-  // @ts-expect-error - attach config on window
-  window.MathJax = {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  (window as any).MathJax = {
     startup: {
       typeset: false,
     },

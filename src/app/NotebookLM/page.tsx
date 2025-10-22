@@ -254,7 +254,7 @@ const NotebookLMFeatures: React.FC = () => {
           </h2>
           
           <div className="space-y-6">
-            {features.map((feature, index) => (
+            {features.map((feature) => (
               <article
                 key={feature.id}
                 className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-200 dark:border-gray-700"
@@ -348,9 +348,9 @@ const NotebookLMFeatures: React.FC = () => {
           </h2>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {coreFeatures.map((feature, index) => (
+            {coreFeatures.map((feature) => (
               <div
-                key={index}
+                key={feature.nameEn}
                 className="bg-white dark:bg-slate-800 rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200 dark:border-gray-700 hover:border-blue-300 dark:hover:border-blue-600 group"
               >
                 <div className="flex items-start space-x-4">

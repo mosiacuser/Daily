@@ -1,6 +1,6 @@
 "use client"
 
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState } from 'react';
 import { ChevronDown, ChevronRight, Globe, Microscope, Target, TrendingUp, Shield, AlertTriangle, CheckCircle, XCircle, Info, ExternalLink, Plus, Minus } from 'lucide-react';
 
 interface ContentItem {
@@ -8,12 +8,7 @@ interface ContentItem {
   en: string;
 }
 
-interface Section {
-  id: string;
-  title: ContentItem;
-  content: ContentItem[];
-  subsections?: Section[];
-}
+
 
 interface BiomarkerData {
   name: ContentItem;
@@ -26,7 +21,6 @@ interface BiomarkerData {
 const CancerBiomarkersGuide: React.FC = () => {
   const [language, setLanguage] = useState<'zh' | 'en'>('zh');
   const [activeSection, setActiveSection] = useState<string>('overview');
-  const [expandedSections, setExpandedSections] = useState<Set<string>>(new Set(['overview']));
   const [expandedBiomarkers, setExpandedBiomarkers] = useState<boolean>(false);
   const [expandedScreening, setExpandedScreening] = useState<Set<string>>(new Set());
   const [expandedHighRisk, setExpandedHighRisk] = useState<boolean>(false);
@@ -169,16 +163,6 @@ const CancerBiomarkersGuide: React.FC = () => {
       color: "from-teal-500 to-teal-600"
     }
   ];
-
-  const toggleSection = (sectionId: string) => {
-    const newExpanded = new Set(expandedSections);
-    if (newExpanded.has(sectionId)) {
-      newExpanded.delete(sectionId);
-    } else {
-      newExpanded.add(sectionId);
-    }
-    setExpandedSections(newExpanded);
-  };
 
   const toggleScreeningItem = (itemId: string) => {
     const newExpanded = new Set(expandedScreening);

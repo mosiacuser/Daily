@@ -3,11 +3,6 @@
 import React, { useState } from 'react';
 import { ChevronDown, ChevronRight, Globe, Zap, Users, BarChart3, Palette, Bot, FileText, Monitor, Share2, Star, AlertTriangle, CheckCircle, ExternalLink } from 'lucide-react';
 
-interface SectionProps {
-  children: React.ReactNode;
-  className?: string;
-}
-
 interface LanguageToggleProps {
   language: 'zh' | 'en';
   onToggle: (lang: 'zh' | 'en') => void;
@@ -15,7 +10,6 @@ interface LanguageToggleProps {
 
 interface ExpandableSectionProps {
   title: string;
-  titleEn: string;
   children: React.ReactNode;
   defaultExpanded?: boolean;
 }
@@ -51,7 +45,6 @@ const LanguageToggle: React.FC<LanguageToggleProps> = ({ language, onToggle }) =
 
 const ExpandableSection: React.FC<ExpandableSectionProps> = ({ 
   title, 
-  titleEn, 
   children, 
   defaultExpanded = false 
 }) => {
@@ -515,7 +508,6 @@ const GammaAnalysis: React.FC = () => {
           <div className="space-y-6">
             <ExpandableSection 
               title="顾问/销售专业人士" 
-              titleEn="Consultants/Sales Professionals"
               defaultExpanded={true}
             >
               <div className="space-y-4">
@@ -544,7 +536,6 @@ const GammaAnalysis: React.FC = () => {
 
             <ExpandableSection 
               title="教育工作者/学生" 
-              titleEn="Educators/Students"
             >
               <div className="space-y-4">
                 <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-500">
@@ -572,7 +563,6 @@ const GammaAnalysis: React.FC = () => {
 
             <ExpandableSection 
               title="初创公司创始人" 
-              titleEn="Startup Founders"
             >
               <div className="space-y-4">
                 <div className="bg-pink-50 p-4 rounded-lg border-l-4 border-pink-500">
@@ -600,7 +590,6 @@ const GammaAnalysis: React.FC = () => {
 
             <ExpandableSection 
               title="市场营销人员" 
-              titleEn="Marketing Professionals"
             >
               <div className="space-y-4">
                 <div className="bg-teal-50 p-4 rounded-lg border-l-4 border-teal-500">

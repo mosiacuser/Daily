@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from 'react';
-import { ChevronDown, Search, Mic, Camera, FileText, Globe, GraduationCap, Video, Database, Settings, ExternalLink, Star, Zap, Brain, Code, BookOpen } from 'lucide-react';
+import { Search, FileText, Globe, Settings, ExternalLink, Star, Zap, Brain, Code } from 'lucide-react';
 
 interface FeatureData {
   category: string;
@@ -20,7 +20,6 @@ interface FeatureData {
 const MetasoResearch: React.FC = () => {
   const [language, setLanguage] = useState<'zh' | 'en'>('zh');
   const [activeTab, setActiveTab] = useState(0);
-  const [expandedCard, setExpandedCard] = useState<number | null>(null);
 
   const featuresData: FeatureData[] = [
     {

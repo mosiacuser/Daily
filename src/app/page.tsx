@@ -38,7 +38,7 @@ function findPageRoutes(dir: string): PageRoute[] {
         }
       }
     }
-  } catch (error) {
+  } catch {
     // Silently fail if a directory can't be read
   }
   return routes;
